@@ -1,0 +1,33 @@
+@import "assets/reset.scss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  background: url("assets/images/starsBackground.jpg") no-repeat fixed center center;
+  //background: url("assets/images/background.jpg") no-repeat fixed center center;
+  background-size: cover;
+  color: white;
+}
+
+button {
+  font-family: inherit;
+}
+
+.heading2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.heading3 {
+  font-size: 50px;
+}
+
+
