@@ -1,4 +1,4 @@
-.rules__container {
+.rules {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0,0,0,0.4);
@@ -13,7 +13,7 @@
   grid-template-columns: 500px;
   padding: 20px 20px;
   justify-items: center;
-  background-color: white;
+  background-color: lightgray;
   border-radius: 10px;
 }
 
@@ -26,6 +26,6 @@
 }
 
 .rules__image {
- max-width: 450px;
+  max-width: 400px;
   width: 100%;
 }

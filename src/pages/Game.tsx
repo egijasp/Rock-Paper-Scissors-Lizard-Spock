@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import Confetti from 'react-confetti';
-import selection from '../assets/data/selection';
+import gameData from '../assets/data/gameData';
 import UserSelectionIcon from '../components/UserSelectionIcon/UserSelectionIcon';
 import Header from '../components/Header/Header';
 import './Game.scss';
@@ -35,13 +34,13 @@ const Game = () => {
       return message.tie;
     }
     if (userSelect.beats.includes(computer)) {
-      return message.win || <Confetti />;
+      return message.win;
     }
     return message.lost;
   };
 
   const randomComputerSelect = () => {
-    const randomSelect = selection[Math.floor(Math.random() * selection.length)];
+    const randomSelect = gameData[Math.floor(Math.random() * gameData.length)];
     setComputerSelect(randomSelect);
   };
 
@@ -86,7 +85,7 @@ const Game = () => {
         </div>
       </div>
       <div className="icon__wrapper">
-        {selection.map((select) => (
+        {gameData.map((select) => (
           <UserSelectionIcon
             key={select.name}
             onClick={() => clickHandler(select)}

@@ -4,7 +4,7 @@ import scissors from '../images/scissors.png';
 import lizard from '../images/lizard.png';
 import spock from '../images/spock.png';
 
-const selection = [
+const gameData = [
   {
     name: 'rock',
     image: rock,
@@ -32,4 +32,4 @@ const selection = [
   },
 ];
 
-export default selection;
+export default gameData;

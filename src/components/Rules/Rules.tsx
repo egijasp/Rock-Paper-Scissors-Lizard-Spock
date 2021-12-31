@@ -1,17 +1,23 @@
 import { AiOutlineCloseCircle } from 'react-icons/all';
 import { FC } from 'react';
-import rulesImage from '../../assets/images/rules-image.png';
 import './Rules.scss';
 
 type RulesProps = {
   onClick: () => void
+  close: () => void
 }
 
-const Rules:FC<RulesProps> = ({ onClick }) => (
+const Rules:FC<RulesProps> = ({ onClick, close }) => (
   <div
-    className="rules__container"
+    className="rules"
+    onClick={close}
   >
-    <div className="rules__image-wrapper">
+    <div
+      className="rules__image-wrapper"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <span
         className="rules__close"
         onClick={onClick}
@@ -20,7 +26,8 @@ const Rules:FC<RulesProps> = ({ onClick }) => (
       </span>
       <img
         className="rules__image"
-        src={rulesImage}
+        src="https://i.gifer.com/1zq5.gif"
+        // src={rulesImage}
         alt="rules"
       />
     </div>
