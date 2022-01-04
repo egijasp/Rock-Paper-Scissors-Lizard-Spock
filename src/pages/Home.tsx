@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '../components/Button/Button';
 import './Home.scss';
 import Rules from '../components/Rules/Rules';
-import NameInput from '../components/NameInput/NameInput';
+import PlayerNameModal from '../components/PlayerNameModal/PlayerNameModal';
 import Game from './Game';
 
 const Home = () => {
@@ -18,7 +18,10 @@ const Home = () => {
   return (
     <div className="container">
       {playerNameModal && (
-      <NameInput
+      <PlayerNameModal
+        closeForm={() => {
+          setPlayerNameModal(false);
+        }}
         value={playerName}
         onChange={(e) => {
           setPlayerName(e.target.value);
