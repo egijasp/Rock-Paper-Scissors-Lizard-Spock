@@ -1,37 +1,80 @@
-.players-container {
+.game {
+  background: url("../assets/images/backgroundGame.jpg") no-repeat fixed center center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.game__header {
+  text-align: center;
+  font-size: 40px;
+  letter-spacing: 10px;
+  font-weight: bold;
+  padding: 30px;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  color: red;
+}
+
+.game__message {
+  text-align: center;
+  height: 50px;
+}
+
+.game__field {
   display: grid;
-  grid-template-columns: 1fr 300px 1fr;
+  grid-template-columns: 1fr 400px 1fr;
   height: 300px;
 }
 
-.player-1 {
+.player-field {
   display: grid;
   justify-content: center;
+  align-self: center;
 }
 
-.player-2 {
-  display: grid;
-  justify-content: center;
-}
-
-.score__container {
-  width: 150px;
+.icon-container {
+  border-radius: 50%;
+  padding: 20px;
+  width: 100px;
   height: 100px;
-  border: 1px solid white;
-  border-radius: 5px;
-  margin: 0 auto;
 }
 
 .game__icon {
-  padding-top: 20px;
-  width: 150px;
+  width: 60px;
 }
 
-.win {
-  max-width: 350px;
-  width: 100%;
+.game__score {
+  display: flex;
+  flex-direction: row;
 }
-.icon__wrapper {
+
+.player1, .player2 {
+  align-self: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.computer {
+  margin-right: -50px;
+}
+
+.game__score-box {
+  width: 150px;
+  height: 100px;
+  border: 3px solid white;
+  border-radius: 5px;
+  margin: 0 auto;
+  align-self: center;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  box-shadow: 1px 3px 31px 8px rgba(237,59,255,0.67);
+}
+
+.score {
+  font-size: 40px;
+}
+
+.weapon-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, 200px);
   grid-gap: 40px;

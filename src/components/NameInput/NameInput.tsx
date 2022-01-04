@@ -36,7 +36,7 @@ const NameInput:FC<NameInputProps> = ({
         />
         <Button
           type="submit"
-          className="btn form__button"
+          className="btn btn-start"
           title="Submit"
         />
       </form>

@@ -1,90 +1,135 @@
-import { useState } from 'react';
-import gameData from '../assets/data/gameData';
+import { FC, useEffect, useState } from 'react';
+import ReactConfetti from 'react-confetti';
+import gameData, { GameData } from '../assets/data/gameData';
 import UserSelectionIcon from '../components/UserSelectionIcon/UserSelectionIcon';
-import Header from '../components/Header/Header';
 import './Game.scss';
-import Sheldon from '../assets/images/you-win-bazzinga.jpg';
+import Results from '../components/Results/Results';
 
-type UserSelection = {
-  name: string,
-  image: string,
-  beats: string[],
-}
-
-const winMessage = <img className="win" src={Sheldon} alt="" />;
-
-const message = {
-  tie: "It's a draw",
-  win: winMessage,
-  lost: 'You lost!',
+const initialState = {
+  name: '',
+  image: '',
+  beats: [''],
 };
 
-const Game = () => {
-  const [userSelect, setUserSelect] = useState({ name: '', image: '', beats: [''] });
-  const [computerSelect, setComputerSelect] = useState({ name: '', image: '' });
+type GameProps = {
+  name: string,
+}
 
-  const player = userSelect.name;
-  const computer = computerSelect.name;
+const Game:FC<GameProps> = ({ name }) => {
+  const [userSelect, setUserSelect] = useState(initialState);
+  const [computerSelect, setComputerSelect] = useState(initialState);
+  const [score, setScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
+  const [message, setMessage] = useState('');
+  const [gameOver, setGameOver] = useState(false);
 
-  const results = () => {
+  useEffect(() => {
+    const player = userSelect.name;
+    const computer = computerSelect.name;
+
     if (!player || !computer) {
-      return null;
+      setMessage('Choose you weapon!');
+    } else if (player === computer) {
+      setMessage('It is a tie!');
+    } else if (userSelect.beats.includes(computer)) {
+      setMessage('Point to you!');
+      setScore(score + 1);
+    } else {
+      setMessage('Point for computer!');
+      setComputerScore(computerScore + 1);
     }
-    if (player === computer) {
-      return message.tie;
-    }
-    if (userSelect.beats.includes(computer)) {
-      return message.win;
-    }
-    return message.lost;
+  }, [userSelect]);
+
+  const restartGame = () => {
+    setScore(0);
+    setComputerScore(0);
+    setMessage('');
+    setUserSelect(initialState);
+    setComputerSelect(initialState);
+    setGameOver(false);
   };
+
+  useEffect(() => {
+    if (score === 3) {
+      setMessage('YES, YOU WIN GAME!!!');
+      setGameOver(true);
+    } else if (computerScore === 3) {
+      setMessage('Oh, no, You lost game!');
+      setGameOver(true);
+    }
+  }, [score, computerScore]);
 
   const randomComputerSelect = () => {
     const randomSelect = gameData[Math.floor(Math.random() * gameData.length)];
     setComputerSelect(randomSelect);
   };
 
-  const clickHandler = (value: UserSelection) => {
+  const clickHandler = (value: GameData) => {
     setUserSelect(value);
     randomComputerSelect();
   };
 
   return (
-    <div>
-      <Header />
-      <div className="players-container">
-        <div className="player-1">
-          <h2 className="heading2">
-            You
-            :
-            <br />
-            <img
-              className="game__icon"
-              src={userSelect.image}
-              alt={userSelect.name}
-            />
-          </h2>
-        </div>
-        <div>
-          <h2
-            className="heading2"
+    <div className="game">
+      {gameOver && (
+        <Results
+          clickHandler={() => {
+            restartGame();
+          }}
+        />
+      )}
+      {score === 3
+        && (
+        <ReactConfetti
+          width={1500}
+          height={700}
+          numberOfPieces={300}
+        />
+        )}
+      <header className="game__header">
+        <span className="header__text">Rock, Paper, Scissors, Lizard, Spock</span>
+      </header>
+      <div className="game__message">
+        <h2 className="heading2">{message}</h2>
+      </div>
+      <div className="game__field">
+        <div className="player-field">
+          <div
+            className="icon-container"
+            style={{ backgroundColor: userSelect.name && 'white' }}
           >
-            {results()}
-          </h2>
-        </div>
-        <div className="player-2">
-          <h2 className="heading2">
-            Computer:
-            <br />
             <img
               className="game__icon"
-              src={computerSelect.image}
-              alt={computerSelect.name}
+              src={userSelect?.image}
+              alt={userSelect?.name}
             />
-          </h2>
+          </div>
+        </div>
+        <div className="game__score">
+          <span className="player1">{name}</span>
+          <div className="game__score-box">
+            <span className="score">
+              {score}
+              :
+              {computerScore}
+            </span>
+          </div>
+          <span className="player2 computer">Computer</span>
+        </div>
+        <div className="player-field">
+          <div
+            className="icon-container"
+            style={{ backgroundColor: computerSelect.name && 'white' }}
+          >
+            <img
+              className="game__icon"
+              src={computerSelect?.image}
+              alt={computerSelect?.name}
+            />
+          </div>
         </div>
       </div>
-      <div className="icon__wrapper">
+      <div className="weapon-wrapper">
         {gameData.map((select) => (
           <UserSelectionIcon
             key={select.name}

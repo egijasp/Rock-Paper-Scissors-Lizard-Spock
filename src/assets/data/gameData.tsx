@@ -1,8 +1,14 @@
-import rock from '../images/rock.png';
-import paper from '../images/paper.png';
-import scissors from '../images/scissors.png';
-import lizard from '../images/lizard.png';
-import spock from '../images/spock.png';
+import rock from '../icons/hand_rock.svg';
+import paper from '../icons/hand-paper.svg';
+import scissors from '../icons/hand-scissors.svg';
+import lizard from '../icons/hand-lizard.svg';
+import spock from '../icons/hand-spock.svg';
+
+type GameData = {
+  name: string,
+  image: string,
+  beats: string[];
+}
 
 const gameData = [
   {
@@ -33,3 +39,4 @@ const gameData = [
 ];
 
 export default gameData;
+export type { GameData };

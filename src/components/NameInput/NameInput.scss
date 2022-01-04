@@ -1,7 +1,7 @@
 .form__container {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@
 
 .player-name__form {
   display: grid;
-  grid-template-columns: 200px;
+  grid-template-columns: 300px;
   padding: 20px 20px;
   justify-items: center;
   background: white;
@@ -21,9 +21,4 @@
 .form__input {
   padding: 5px 10px;
   font-family: inherit;
-}
-
-.form__button {
-  background-color: darkslategray;
-
 }

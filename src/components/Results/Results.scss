@@ -1,4 +1,4 @@
-.rules {
+.results-container {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0,0,0,0.4);
@@ -8,9 +8,9 @@
   align-items: center;
 }
 
-.rules__image-wrapper {
+.results {
   display: grid;
-  grid-template-columns: 420px;
+  grid-template-columns: 300px;
   padding: 10px 10px;
   justify-items: center;
   background-color: white;
@@ -18,15 +18,8 @@
   box-shadow: 1px 3px 31px 8px rgba(237,59,255,0.67);
 }
 
-.rules__close {
-  justify-self: right;
-  padding-right: 5px;
-  cursor: pointer;
-  font-size: 20px;
-  color: black;
+.results__winner-image {
+  width: 350px;
+  height: auto;
 }
 
-.rules__image {
-  max-width: 400px;
-  width: 100%;
-}

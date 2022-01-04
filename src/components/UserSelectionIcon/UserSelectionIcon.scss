@@ -1,11 +1,27 @@
 .icon__button {
-  background-color: transparent;
+  background-color: white;
   border: none;
   cursor: pointer;
-  width: 200px;
+  padding: 30px;
   border-radius: 50%;
 }
 
 .icon {
-  width: 200px;
+  width: 70px;
+}
+
+.wrapper {
+  padding: 15px;
+  background-color: blueviolet;
+  width: 160px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: deeppink;
+    box-shadow: 1px 3px 31px 8px rgba(237,59,255,0.67);
+  }
+
+  &:active {
+    background-color: darkblue;
+  }
 }
