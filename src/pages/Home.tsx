@@ -27,7 +27,7 @@ const Home = () => {
         onSubmit={(e) => {
           e.preventDefault();
           if (!playerName) {
-            return alert('You need to write your name to play!');
+            return alert('You must enter a name to start the game!');
           }
           setStartGame(true);
           setPlayerNameModal(false);
