@@ -38,7 +38,7 @@ const Game:FC<GameProps> = ({ name }) => {
       setMessage('Point for computer!');
       setComputerScore(computerScore + 1);
     }
-  }, [userSelect]);
+  }, [userSelect, computerSelect]);
 
   const restartGame = () => {
     setScore(0);
