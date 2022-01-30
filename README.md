@@ -8,6 +8,10 @@ You can try it out: https://rock-paper-scissors-lizard-spock-react.netlify.app/
 
 ---
 
+<img src="./src/Rock-Paper-Scissors-Lizard-Spock.gif" alt="gif">
+
+---
+
 ## Available Scripts
 
 In the project directory, you can run:
